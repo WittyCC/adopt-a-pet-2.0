@@ -9,7 +9,18 @@ var Center = [
   {name: "dog6", available: true, type: "dog"},
   {name: "Ranger", available: false, type: "cat"},
   {name: "Dallas", available: false, type: "cat"},
-  {name: "cat1", available: true, type: "cat"},];
+  {name: "cat1", available: true, type: "cat"}];
+
+  var fakeCenter = [
+    {name: "dog1", isAvailable: true, type: "dog"},
+    {name: "dog2", isAvailable: true, type: "dog"},
+    {name: "dog3", isAvailable: true, type: "dog"},
+    {name: "dog4", isAvailable: true, type: "dog"},
+    {name: "dog5", isAvailable: true, type: "dog"},
+    {name: "dog6", isAvailable: true, type: "dog"},
+    {name: "Ranger", isAvailable: false, type: "cat"},
+    {name: "Dallas", isAvailable: false, type: "cat"},
+    {name: "cat1", isAvailable: true, type: "cat"}];
 
 function Pet (name,type) {
 	this.name = name;
@@ -91,11 +102,17 @@ alert (tempString);
 
 //User Interface
 $(function() {
-//Loop through the Center object
-fakeCenter.forEach(function(pet) {
+  //Loop through the Center object//create a list item for each pet
+  fakeCenter.forEach(function(pet) {
+    $("#petList").append("<li class='petClass'>" + pet.name + "</li>");
+    //each name will be a link to details of the pet
+    $(".petClass").last().click(function(){
+      $("#spanName").text(pet.name);
+      $("#spanType").text(pet.type);
+      $("#spanAvailability").text(pet.isAvailable);
+    });
 
-})
-//create a list item for each pet
-//each list item has a name,
-//each name will be a link to details of the pet
+  });
+
 });
+
